@@ -111,7 +111,7 @@
             logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
             logOutToolStripMenuItem.Size = new Size(224, 26);
             logOutToolStripMenuItem.Text = "Log out";
-            logOutToolStripMenuItem.Click += logOutToolStripMenuItem_Click;
+            
             // 
             // addUserToolStripMenuItem
             // 

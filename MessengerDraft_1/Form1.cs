@@ -1,4 +1,4 @@
-using System.Text;
+﻿using System.Text;
 using System.Net.Sockets;
 using System.Net.Sockets;
 
@@ -266,8 +266,8 @@ namespace MessengerDraft_1
 
             client.Send(request);
 
-            // Clear current conversation
-            floMsg.Controls.Clear();
+            // Clear current conversation
+            floMsg.Controls.Clear();
 
         }
 
@@ -298,9 +298,9 @@ namespace MessengerDraft_1
         {
             Panel row = new Panel();
             row.Width = floMsg.ClientSize.Width - 25;
-            row.AutoSize = true;
+            row.AutoSize = false;
             row.BackColor = Color.Transparent;
-            row.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+
 
             Panel msg = new Panel();
             msg.AutoSize = true;
@@ -315,7 +315,7 @@ namespace MessengerDraft_1
             lbl.Text = message.messageText;
             lbl.AutoSize = true;
             lbl.BackColor = Color.White;
-            lbl.Font = new Font("Sage UI", 15, FontStyle.Regular);
+            lbl.Font = new Font("Segoe UI", 12, FontStyle.Regular);
             lbl.MaximumSize = new Size(180, 0);
             lbl.Location = new Point(10, 10);
 
@@ -324,10 +324,50 @@ namespace MessengerDraft_1
             msg.PerformLayout();
             msg.Size = msg.PreferredSize;
 
-            msg.Location = new Point(row.Width - msg.Width - 10, 10);
+            msg.Location = new Point(row.Width - msg.Width - 15, 10);
+            row.Height = msg.Height + 20;
+            Label lblMenu = new Label();
+            lblMenu.Text = "⋮";
+            lblMenu.Size = new Size(20, 20);
+            lblMenu.Cursor = Cursors.Hand;
+            lblMenu.Font = new Font("Arial", 14, FontStyle.Bold);
+            lblMenu.ForeColor = Color.DarkGray;
+            lblMenu.TextAlign = ContentAlignment.MiddleCenter;
+            lblMenu.Visible = true;
+            lblMenu.Location = new Point(msg.Left - 25, msg.Top + (msg.Height - lblMenu.Height) / 2);
+            ContextMenuStrip deleteMenu = new ContextMenuStrip();
+            ToolStripMenuItem deleteItem = new ToolStripMenuItem("Delete Message");
+            deleteItem.Click += (sender, e) => {
+                DialogResult result = MessageBox.Show("Do you want to delete this message?", "Delete Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    floMsg.Controls.Remove(row);
+                }
+            };
+            deleteMenu.Items.Add(deleteItem);
+            lblMenu.Click += (sender, e) => {
+                deleteMenu.Show(lblMenu, new Point(0, lblMenu.Height));
+            };
+            EventHandler showMenu = (s, e) => { lblMenu.Visible = true; };
+            EventHandler hideMenu = (s, e) => {
+                Point clientMousePos = row.PointToClient(Cursor.Position);
+                if (!row.ClientRectangle.Contains(clientMousePos))
+                {
+                    lblMenu.Visible = false;
+                }
+            };
+            row.MouseEnter += showMenu;
+            row.MouseLeave += hideMenu;
+            msg.MouseEnter += showMenu;
+            msg.MouseLeave += hideMenu;
+            lbl.MouseEnter += showMenu;
+            lbl.MouseLeave += hideMenu;
+            lblMenu.MouseEnter += showMenu;
+            lblMenu.MouseLeave += hideMenu;
 
             row.Height = row.Height + 20;
             row.Controls.Add(msg);
+            row.Controls.Add(lblMenu);
 
             floMsg.Controls.Add(row);
         }
@@ -336,17 +376,16 @@ namespace MessengerDraft_1
         {
             Panel row = new Panel();
             row.Width = floMsg.ClientSize.Width - 25;
-            row.AutoSize = true;
+            row.AutoSize = false;
             row.BackColor = Color.Transparent;
-            row.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+
 
             Panel msg = new Panel();
             msg.AutoSize = true;
             msg.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            msg.BackColor = Color.Transparent;
+            msg.BackColor = Color.LightGray;
             msg.Padding = new Padding(10);
-            msg.Anchor = AnchorStyles.Right | AnchorStyles.Top;
-            msg.Location = new Point(row.ClientSize.Width - msg.PreferredSize.Width, 10);
+
 
 
             Label lbl = new Label();
@@ -356,6 +395,49 @@ namespace MessengerDraft_1
             lbl.Font = new Font("Sage UI", 15, FontStyle.Regular);
             lbl.MaximumSize = new Size(180, 0);
             lbl.Location = new Point(10, 10);
+            msg.Controls.Add(lbl);
+            msg.PerformLayout();
+            msg.Size = msg.PreferredSize;
+            msg.Location = new Point(10, 10);
+            row.Height = msg.Height + 20;
+            Label lblMenu = new Label();
+            lblMenu.Text = "⋮";
+            lblMenu.Size = new Size(15, 20);
+            lblMenu.Cursor = Cursors.Hand;
+            lblMenu.Font = new Font("Segoe UI", 12, FontStyle.Bold);
+            lblMenu.ForeColor = Color.Gray;
+            lblMenu.TextAlign = ContentAlignment.MiddleCenter;
+            lblMenu.Visible = true;
+            lblMenu.Location = new Point(msg.Right + 5, msg.Top + (msg.Height - lblMenu.Height) / 2);
+            ContextMenuStrip deleteMenu = new ContextMenuStrip();
+            ToolStripMenuItem deleteItem = new ToolStripMenuItem("Delete Message");
+            deleteItem.Click += (sender, e) => {
+                DialogResult result = MessageBox.Show("Do you want to delete this message?", "Delete Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    floMsg.Controls.Remove(row);
+                }
+            };
+            deleteMenu.Items.Add(deleteItem);
+            lblMenu.Click += (sender, e) => {
+                deleteMenu.Show(lblMenu, new Point(0, lblMenu.Height));
+            };
+            EventHandler showMenu = (s, e) => { lblMenu.Visible = true; };
+            EventHandler hideMenu = (s, e) => {
+                Point clientMousePos = row.PointToClient(Cursor.Position);
+                if (!row.ClientRectangle.Contains(clientMousePos))
+                {
+                    lblMenu.Visible = false;
+                }
+            };
+            row.MouseEnter += showMenu;
+            row.MouseLeave += hideMenu;
+            msg.MouseEnter += showMenu;
+            msg.MouseLeave += hideMenu;
+            lbl.MouseEnter += showMenu;
+            lbl.MouseLeave += hideMenu;
+            lblMenu.MouseEnter += showMenu;
+            lblMenu.MouseLeave += hideMenu;
 
 
             msg.Controls.Add(lbl);
@@ -366,6 +448,7 @@ namespace MessengerDraft_1
 
             row.Height = row.Height + 20;
             row.Controls.Add(msg);
+            row.Controls.Add(lblMenu);
 
             floMsg.Controls.Add(row);
         }
@@ -382,18 +465,9 @@ namespace MessengerDraft_1
             floMsg.VerticalScroll.Value = bottom;
 
             floMsg.ScrollControlIntoView(
-                floMsg.Controls[floMsg.Controls.Count - 1]
+              floMsg.Controls[floMsg.Controls.Count - 1]
             );
-        }
-
-        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            client.Disconnect();
-            logForm lf = new logForm();
-
-            lf.Show();
-
-            this.Hide();
         }
     }
 }
+
