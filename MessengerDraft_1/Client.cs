@@ -80,6 +80,13 @@ public class Client
         }
     }
 
+    public void deleteMessage(string messageId)
+    {
+        string request = $"DELETE_MESSAGE:{messageId}";
+
+        Send(request);
+    }
+
     public void StartListening()
     {
         if (listening)

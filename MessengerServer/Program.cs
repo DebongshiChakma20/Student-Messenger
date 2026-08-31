@@ -229,7 +229,7 @@ void HandleClient(TcpClient client)
 
                 foreach (string[] msg in messageList)
                 {
-                    string response=$"OLD_MESSAGE:{msg[0]}|{msg[1]}|{msg[2]}\n";
+                    string response = $"OLD_MESSAGE:{msg[0]}|{msg[1]}|{msg[2]}|{msg[3]}\n";
 
                     byte[] reply=Encoding.UTF8.GetBytes(response);
 
@@ -260,6 +260,24 @@ void HandleClient(TcpClient client)
 
                     stream.Write(reply, 0, reply.Length);
                 }
+
+                continue;
+            }
+            //Delete
+
+            if(message.StartsWith("DELETE_MESSAGE:"))
+            {
+                string messageId = message.Substring("DELETE_MESSAGE:".Length);
+
+                Console.WriteLine("Deleting message: " + messageId);
+
+                bool deleted = messages.deleteMessage(messageId);
+
+                string response = deleted ? "DELETE_SUCCESS\n" : "DELETE_FAILED\n";
+
+                byte[] reply = Encoding.UTF8.GetBytes(response);
+
+                stream.Write(reply, 0, reply.Length);
 
                 continue;
             }

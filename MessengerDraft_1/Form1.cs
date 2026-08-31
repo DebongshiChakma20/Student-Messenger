@@ -7,6 +7,7 @@ namespace MessengerDraft_1
     public partial class MainForm : Form
     {
         private Client client;
+        
 
 
         private Contact currentContact;
@@ -121,14 +122,15 @@ namespace MessengerDraft_1
                 if (text.StartsWith("OLD_MESSAGE:"))
                 {
                     string data = text.Substring("OLD_MESSAGE:".Length);
-                    string[] parts = data.Split('|', 3);
+                    string[] parts = data.Split('|', 4);
 
-                    if (parts.Length != 3) return;
+                    if (parts.Length != 4) return;
 
                     Message message = new Message();
-                    message.senderId = parts[0];
-                    message.recreiverId = parts[1];
-                    message.messageText = parts[2];
+                    message.messageId = parts[0];
+                    message.senderId = parts[1];
+                    message.recreiverId = parts[2];
+                    message.messageText = parts[3];
                     message.time = DateTime.Now;
 
                     allMsg.Add(message);
@@ -142,6 +144,19 @@ namespace MessengerDraft_1
                     {
                         loadConversation(currentContact);
                     }
+
+                    return;
+                }
+                if (text == "DELETE_SUCCESS")
+                {
+                    MessageBox.Show("Message deleted successfully.");
+
+                    return;
+                }
+
+                if (text == "DELETE_FAILED")
+                {
+                    MessageBox.Show("Failed to delete message.");
 
                     return;
                 }
@@ -168,6 +183,7 @@ namespace MessengerDraft_1
             message.messageText = rtbMessage.Text;
             message.time = DateTime.Now;
             message.recreiverId = currentContact.id;
+       
 
             messageOwnDisplay(message);
             allMsg.Add(message);
@@ -273,10 +289,12 @@ namespace MessengerDraft_1
 
         private void loadConversation(Contact contact)
         {
+            
             floMsg.Controls.Clear();
 
             foreach (Message msg in allMsg)
             {
+                string msgId = msg.messageId;
                 if ((msg.senderId == lblUsersId.Text && msg.recreiverId == contact.id) || (msg.senderId == contact.id && msg.recreiverId == lblUsersId.Text))
                 {
                     if (msg.senderId == lblUsersId.Text)
@@ -335,15 +353,25 @@ namespace MessengerDraft_1
             lblMenu.TextAlign = ContentAlignment.MiddleCenter;
             lblMenu.Visible = true;
             lblMenu.Location = new Point(msg.Left - 25, msg.Top + (msg.Height - lblMenu.Height) / 2);
+
+
             ContextMenuStrip deleteMenu = new ContextMenuStrip();
             ToolStripMenuItem deleteItem = new ToolStripMenuItem("Delete Message");
-            deleteItem.Click += (sender, e) => {
-                DialogResult result = MessageBox.Show("Do you want to delete this message?", "Delete Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
+
+            deleteItem.Click += (sender, e) =>
+            {
+                DialogResult dr = MessageBox.Show("Do u want to delete this message?", "Delete", MessageBoxButtons.YesNo);
+                if (dr == DialogResult.Yes)
                 {
-                    floMsg.Controls.Remove(row);
+                    client.deleteMessage(message.messageId);
+                }
+                else
+                {
+                    return;
                 }
             };
+
+
             deleteMenu.Items.Add(deleteItem);
             lblMenu.Click += (sender, e) => {
                 deleteMenu.Show(lblMenu, new Point(0, lblMenu.Height));
@@ -411,13 +439,20 @@ namespace MessengerDraft_1
             lblMenu.Location = new Point(msg.Right + 5, msg.Top + (msg.Height - lblMenu.Height) / 2);
             ContextMenuStrip deleteMenu = new ContextMenuStrip();
             ToolStripMenuItem deleteItem = new ToolStripMenuItem("Delete Message");
-            deleteItem.Click += (sender, e) => {
-                DialogResult result = MessageBox.Show("Do you want to delete this message?", "Delete Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
+
+            deleteItem.Click += (sender, e) =>
+            {
+                DialogResult dr = MessageBox.Show("Do u want to delete this message?", "Delete", MessageBoxButtons.YesNo);
+                if (dr == DialogResult.Yes)
                 {
-                    floMsg.Controls.Remove(row);
+                    client.deleteMessage(message.messageId);
+                }
+                else
+                {
+                    return;
                 }
             };
+
             deleteMenu.Items.Add(deleteItem);
             lblMenu.Click += (sender, e) => {
                 deleteMenu.Show(lblMenu, new Point(0, lblMenu.Height));

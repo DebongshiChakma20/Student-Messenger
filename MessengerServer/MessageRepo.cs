@@ -26,6 +26,24 @@ public class MessageRepository
         return command.ExecuteNonQuery() > 0;
     }
 
+    public bool deleteMessage(string messageId)
+    {
+        using SqlConnection connecction = database.GetConnection();
+
+        connecction.Open();
+
+        string sql="""
+            DELETE FROM Messages
+            WHERE messageId=@messageId
+
+            """;
+
+        using SqlCommand cmd = new SqlCommand(sql, connecction);
+        cmd.Parameters.AddWithValue("@messageId", messageId);
+
+        return cmd.ExecuteNonQuery() > 0;
+    }
+
     public List<string[]> getMessage(string userId, string contactId)
     {
         List<string[]> message = new List<string[]>();
@@ -34,9 +52,10 @@ public class MessageRepository
         connection.Open();
 
         string sql = """
-            SELECT senderId,receiverId,messageText FROM Messages
+            SELECT messageId, senderId, receiverId, messageText
+            FROM Messages
             WHERE (senderId=@userId AND receiverId=@contactId) OR
-                (senderId=@contactId AND receiverId=@userId)
+                  (senderId=@contactId AND receiverId=@userId)
             ORDER BY messageId ASC
             """;
 
@@ -51,6 +70,7 @@ public class MessageRepository
         {
             message.Add(new string[]
             {
+                reader["messageId"].ToString()!,
                 reader["senderId"].ToString()!,
                 reader["receiverId"].ToString()!,
                 reader["messageText"].ToString()!
