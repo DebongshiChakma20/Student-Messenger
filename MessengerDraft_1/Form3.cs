@@ -82,14 +82,5 @@ namespace MessengerDraft_1
             });
         }
     }
-    public static class GlobalData
-    {
-        
-        public static Dictionary<string, string> UserCredentials = new Dictionary<string, string>();
-
-       
-        public static List<string> UserIds = new List<string>();
-    }
-
-
+  
 }

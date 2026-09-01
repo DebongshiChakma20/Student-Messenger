@@ -158,7 +158,7 @@ namespace MessengerDraft_1
                     return;
                 }
 
-                if (parts[0] == "USER_FOUND")
+                if (parts[1] == "USER_FOUND")
                 {
                     Contact contact = new Contact();
 

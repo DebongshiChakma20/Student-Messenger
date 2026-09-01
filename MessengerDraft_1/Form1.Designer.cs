@@ -63,10 +63,9 @@
             fopContact.AutoScroll = true;
             fopContact.BackgroundImage = Properties.Resources.chatList;
             fopContact.FlowDirection = FlowDirection.TopDown;
-            fopContact.Location = new Point(14, 77);
-            fopContact.Margin = new Padding(3, 4, 3, 4);
+            fopContact.Location = new Point(12, 58);
             fopContact.Name = "fopContact";
-            fopContact.Size = new Size(363, 552);
+            fopContact.Size = new Size(318, 414);
             fopContact.TabIndex = 5;
             // 
             // menuStrip1
@@ -75,8 +74,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { moreToolStripMenuItem, addUserToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(7, 3, 0, 3);
-            menuStrip1.Size = new Size(1017, 30);
+            menuStrip1.Size = new Size(890, 24);
             menuStrip1.TabIndex = 6;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -84,66 +82,64 @@
             // 
             moreToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aboutUsToolStripMenuItem, exitToolStripMenuItem, signUpInToolStripMenuItem, logOutToolStripMenuItem });
             moreToolStripMenuItem.Name = "moreToolStripMenuItem";
-            moreToolStripMenuItem.Size = new Size(58, 24);
+            moreToolStripMenuItem.Size = new Size(47, 20);
             moreToolStripMenuItem.Text = "More";
             // 
             // aboutUsToolStripMenuItem
             // 
             aboutUsToolStripMenuItem.Name = "aboutUsToolStripMenuItem";
-            aboutUsToolStripMenuItem.Size = new Size(224, 26);
+            aboutUsToolStripMenuItem.Size = new Size(180, 22);
             aboutUsToolStripMenuItem.Text = "About us";
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new Size(224, 26);
+            exitToolStripMenuItem.Size = new Size(180, 22);
             exitToolStripMenuItem.Text = "Exit";
             // 
             // signUpInToolStripMenuItem
             // 
             signUpInToolStripMenuItem.Name = "signUpInToolStripMenuItem";
-            signUpInToolStripMenuItem.Size = new Size(224, 26);
+            signUpInToolStripMenuItem.Size = new Size(180, 22);
             signUpInToolStripMenuItem.Text = "SignUp/In";
             signUpInToolStripMenuItem.Click += signUpInToolStripMenuItem_Click;
             // 
             // logOutToolStripMenuItem
             // 
             logOutToolStripMenuItem.Name = "logOutToolStripMenuItem";
-            logOutToolStripMenuItem.Size = new Size(224, 26);
+            logOutToolStripMenuItem.Size = new Size(180, 22);
             logOutToolStripMenuItem.Text = "Log out";
-            
+            logOutToolStripMenuItem.Click += logOutToolStripMenuItem_Click;
             // 
             // addUserToolStripMenuItem
             // 
             addUserToolStripMenuItem.Name = "addUserToolStripMenuItem";
-            addUserToolStripMenuItem.Size = new Size(84, 24);
+            addUserToolStripMenuItem.Size = new Size(67, 20);
             addUserToolStripMenuItem.Text = "Add User";
             addUserToolStripMenuItem.Click += addUserToolStripMenuItem_Click;
             // 
             // tbxSearch
             // 
-            tbxSearch.Location = new Point(142, 40);
-            tbxSearch.Margin = new Padding(3, 4, 3, 4);
+            tbxSearch.Location = new Point(124, 30);
             tbxSearch.Name = "tbxSearch";
-            tbxSearch.Size = new Size(175, 27);
+            tbxSearch.Size = new Size(154, 23);
             tbxSearch.TabIndex = 7;
             // 
             // lblSearch
             // 
             lblSearch.AutoSize = true;
-            lblSearch.Location = new Point(75, 45);
+            lblSearch.Location = new Point(66, 34);
             lblSearch.Name = "lblSearch";
-            lblSearch.Size = new Size(56, 20);
+            lblSearch.Size = new Size(45, 15);
             lblSearch.TabIndex = 8;
             lblSearch.Text = "Search:";
             // 
             // btnSearch
             // 
             btnSearch.Image = Properties.Resources.search4;
-            btnSearch.Location = new Point(325, 37);
-            btnSearch.Margin = new Padding(3, 4, 3, 4);
+            btnSearch.Location = new Point(284, 28);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(66, 35);
+            btnSearch.Size = new Size(58, 26);
             btnSearch.TabIndex = 9;
             btnSearch.UseVisualStyleBackColor = true;
             // 
@@ -151,10 +147,9 @@
             // 
             panelMessage.Controls.Add(floMsg);
             panelMessage.Controls.Add(panel2);
-            panelMessage.Location = new Point(397, 44);
-            panelMessage.Margin = new Padding(3, 4, 3, 4);
+            panelMessage.Location = new Point(347, 33);
             panelMessage.Name = "panelMessage";
-            panelMessage.Size = new Size(512, 585);
+            panelMessage.Size = new Size(448, 439);
             panelMessage.TabIndex = 10;
             // 
             // floMsg
@@ -163,9 +158,8 @@
             floMsg.BackgroundImage = Properties.Resources.chatBack;
             floMsg.FlowDirection = FlowDirection.TopDown;
             floMsg.Location = new Point(0, 0);
-            floMsg.Margin = new Padding(3, 4, 3, 4);
             floMsg.Name = "floMsg";
-            floMsg.Size = new Size(512, 532);
+            floMsg.Size = new Size(448, 399);
             floMsg.TabIndex = 0;
             floMsg.WrapContents = false;
             // 
@@ -174,28 +168,25 @@
             panel2.Controls.Add(rtbMessage);
             panel2.Controls.Add(btnSend);
             panel2.Controls.Add(lblText);
-            panel2.Location = new Point(0, 531);
-            panel2.Margin = new Padding(3, 4, 3, 4);
+            panel2.Location = new Point(0, 398);
             panel2.Name = "panel2";
-            panel2.Size = new Size(510, 60);
+            panel2.Size = new Size(446, 45);
             panel2.TabIndex = 12;
             // 
             // rtbMessage
             // 
-            rtbMessage.Location = new Point(55, 9);
-            rtbMessage.Margin = new Padding(3, 4, 3, 4);
+            rtbMessage.Location = new Point(48, 7);
             rtbMessage.Name = "rtbMessage";
-            rtbMessage.Size = new Size(350, 33);
+            rtbMessage.Size = new Size(307, 26);
             rtbMessage.TabIndex = 8;
             rtbMessage.Text = "";
             // 
             // btnSend
             // 
             btnSend.Image = Properties.Resources.sendIcon;
-            btnSend.Location = new Point(424, 9);
-            btnSend.Margin = new Padding(3, 4, 3, 4);
+            btnSend.Location = new Point(371, 7);
             btnSend.Name = "btnSend";
-            btnSend.Size = new Size(86, 43);
+            btnSend.Size = new Size(75, 32);
             btnSend.TabIndex = 7;
             btnSend.UseVisualStyleBackColor = true;
             btnSend.Click += btnSend_Click;
@@ -204,9 +195,9 @@
             // 
             lblText.AutoSize = true;
             lblText.BackColor = Color.FromArgb(128, 255, 255);
-            lblText.Location = new Point(16, 13);
+            lblText.Location = new Point(14, 10);
             lblText.Name = "lblText";
-            lblText.Size = new Size(36, 20);
+            lblText.Size = new Size(28, 15);
             lblText.TabIndex = 5;
             lblText.Text = "Text";
             // 
@@ -215,17 +206,16 @@
             panel1.BackColor = Color.White;
             panel1.Controls.Add(lblUsersId);
             panel1.Controls.Add(pbProfile);
-            panel1.Location = new Point(915, 36);
-            panel1.Margin = new Padding(3, 4, 3, 4);
+            panel1.Location = new Point(801, 27);
             panel1.Name = "panel1";
-            panel1.Size = new Size(102, 104);
+            panel1.Size = new Size(89, 78);
             panel1.TabIndex = 11;
             // 
             // lblUsersId
             // 
-            lblUsersId.Location = new Point(3, 64);
+            lblUsersId.Location = new Point(3, 48);
             lblUsersId.Name = "lblUsersId";
-            lblUsersId.Size = new Size(96, 37);
+            lblUsersId.Size = new Size(84, 28);
             lblUsersId.TabIndex = 1;
             lblUsersId.Text = "Id";
             lblUsersId.TextAlign = ContentAlignment.MiddleCenter;
@@ -233,10 +223,9 @@
             // pbProfile
             // 
             pbProfile.BackgroundImage = Properties.Resources.profile2;
-            pbProfile.Location = new Point(27, 11);
-            pbProfile.Margin = new Padding(3, 4, 3, 4);
+            pbProfile.Location = new Point(24, 8);
             pbProfile.Name = "pbProfile";
-            pbProfile.Size = new Size(42, 37);
+            pbProfile.Size = new Size(37, 28);
             pbProfile.TabIndex = 0;
             pbProfile.TabStop = false;
             pbProfile.Click += pbProfile_Click;
@@ -244,10 +233,9 @@
             // btnbackMain
             // 
             btnbackMain.BackgroundImage = Properties.Resources.backArrow;
-            btnbackMain.Location = new Point(0, 36);
-            btnbackMain.Margin = new Padding(3, 4, 3, 4);
+            btnbackMain.Location = new Point(0, 27);
             btnbackMain.Name = "btnbackMain";
-            btnbackMain.Size = new Size(55, 31);
+            btnbackMain.Size = new Size(48, 23);
             btnbackMain.TabIndex = 12;
             btnbackMain.UseVisualStyleBackColor = true;
             // 
@@ -257,11 +245,11 @@
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 255, 255);
             BackgroundImage = Properties.Resources.back;
-            ClientSize = new Size(1017, 659);
+            ClientSize = new Size(890, 494);
             Controls.Add(btnbackMain);
             Controls.Add(panel1);
             Controls.Add(panelMessage);
@@ -270,7 +258,6 @@
             Controls.Add(tbxSearch);
             Controls.Add(fopContact);
             Controls.Add(menuStrip1);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "MainForm";
             Text = "Main";
             FormClosing += MainForm_FormClosing;

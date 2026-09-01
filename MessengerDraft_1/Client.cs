@@ -17,8 +17,7 @@ public class Client
     {
         try
         {
-            if (client != null && client.Connected)
-                return;
+            if (client != null && client.Connected) return;
 
             client = new TcpClient();
 

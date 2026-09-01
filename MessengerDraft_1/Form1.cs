@@ -7,7 +7,7 @@ namespace MessengerDraft_1
     public partial class MainForm : Form
     {
         private Client client;
-        
+
 
 
         private Contact currentContact;
@@ -34,6 +34,7 @@ namespace MessengerDraft_1
             lgform.Show();
 
             this.Hide();
+            client.Disconnect();
         }
 
         private void addUserToolStripMenuItem_Click(object sender, EventArgs e)
@@ -183,7 +184,7 @@ namespace MessengerDraft_1
             message.messageText = rtbMessage.Text;
             message.time = DateTime.Now;
             message.recreiverId = currentContact.id;
-       
+
 
             messageOwnDisplay(message);
             allMsg.Add(message);
@@ -289,7 +290,7 @@ namespace MessengerDraft_1
 
         private void loadConversation(Contact contact)
         {
-            
+
             floMsg.Controls.Clear();
 
             foreach (Message msg in allMsg)
@@ -344,6 +345,7 @@ namespace MessengerDraft_1
 
             msg.Location = new Point(row.Width - msg.Width - 15, 10);
             row.Height = msg.Height + 20;
+
             Label lblMenu = new Label();
             lblMenu.Text = "⋮";
             lblMenu.Size = new Size(20, 20);
@@ -373,11 +375,13 @@ namespace MessengerDraft_1
 
 
             deleteMenu.Items.Add(deleteItem);
-            lblMenu.Click += (sender, e) => {
+            lblMenu.Click += (sender, e) =>
+            {
                 deleteMenu.Show(lblMenu, new Point(0, lblMenu.Height));
             };
             EventHandler showMenu = (s, e) => { lblMenu.Visible = true; };
-            EventHandler hideMenu = (s, e) => {
+            EventHandler hideMenu = (s, e) =>
+            {
                 Point clientMousePos = row.PointToClient(Cursor.Position);
                 if (!row.ClientRectangle.Contains(clientMousePos))
                 {
@@ -423,6 +427,8 @@ namespace MessengerDraft_1
             lbl.Font = new Font("Sage UI", 15, FontStyle.Regular);
             lbl.MaximumSize = new Size(180, 0);
             lbl.Location = new Point(10, 10);
+
+
             msg.Controls.Add(lbl);
             msg.PerformLayout();
             msg.Size = msg.PreferredSize;
@@ -454,11 +460,13 @@ namespace MessengerDraft_1
             };
 
             deleteMenu.Items.Add(deleteItem);
-            lblMenu.Click += (sender, e) => {
+            lblMenu.Click += (sender, e) =>
+            {
                 deleteMenu.Show(lblMenu, new Point(0, lblMenu.Height));
             };
             EventHandler showMenu = (s, e) => { lblMenu.Visible = true; };
-            EventHandler hideMenu = (s, e) => {
+            EventHandler hideMenu = (s, e) =>
+            {
                 Point clientMousePos = row.PointToClient(Cursor.Position);
                 if (!row.ClientRectangle.Contains(clientMousePos))
                 {
@@ -502,6 +510,15 @@ namespace MessengerDraft_1
             floMsg.ScrollControlIntoView(
               floMsg.Controls[floMsg.Controls.Count - 1]
             );
+        }
+
+        private void logOutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            logForm lf = new logForm();
+
+            this.Hide();
+            lf.Show();
+            client.Disconnect();
         }
     }
 }
