@@ -133,6 +133,16 @@ namespace Messenger.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap oneee {
+            get {
+                object obj = ResourceManager.GetObject("oneee", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap profile {
             get {
                 object obj = ResourceManager.GetObject("profile", resourceCulture);
@@ -266,6 +276,16 @@ namespace Messenger.Properties {
         internal static System.Drawing.Bitmap signupPanel {
             get {
                 object obj = ResourceManager.GetObject("signupPanel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap twoo {
+            get {
+                object obj = ResourceManager.GetObject("twoo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
