@@ -118,32 +118,41 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="signinPanelBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\signinPanelBackground.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="sendIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\sendIcon.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="signUpBack" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\signUpBack.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="backArrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\backArrow1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="profile1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\profile1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="search4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\search4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="addPanel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\addPanel.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="backArrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\backArrow1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="signinpanel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\signinpanel3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="back" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\back1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="addPanel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\addPanel.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="search" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="profile2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\profile2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="signupPanel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\signupPanel.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="signinPanelBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\signinPanelBackground.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="profile1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\profile1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="search1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\search1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -154,28 +163,22 @@
   <data name="chatBack" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\chatBack.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="chatList" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\chatList.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="addPanelBAck" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\addPanelBAck.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="search2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\search2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="profile" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\profile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="signinpanel1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\signinpanel4.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="signinpanel" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\signinpanel3.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="profile" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\profile.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="chatList" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\chatList.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="search" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="profile2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\profile2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="admin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\admin.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

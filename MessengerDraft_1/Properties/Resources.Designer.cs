@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MessengerDraft_1.Properties {
+namespace Messenger.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace MessengerDraft_1.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MessengerDraft_1.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Messenger.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -76,6 +76,16 @@ namespace MessengerDraft_1.Properties {
         internal static System.Drawing.Bitmap addPanelBAck {
             get {
                 object obj = ResourceManager.GetObject("addPanelBAck", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap admin {
+            get {
+                object obj = ResourceManager.GetObject("admin", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

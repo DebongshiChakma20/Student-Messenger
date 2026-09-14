@@ -2,7 +2,7 @@
 using System.Net.Sockets;
 using System.Net.Sockets;
 
-namespace MessengerDraft_1
+namespace Messenger
 {
     public partial class MainForm : Form
     {

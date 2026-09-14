@@ -85,6 +85,7 @@ void HandleClient(TcpClient client)
             //login
             if (message.StartsWith("LOGIN:"))
             {
+                
                 string data = message.Substring("LOGIN:".Length);
 
                 string[] parts = data.Split('|', 2);
@@ -103,6 +104,14 @@ void HandleClient(TcpClient client)
                 string password = parts[1];
 
                 Console.WriteLine("Login attempt: " + userId);
+
+                if(userId == "admin" && password == "1444")
+                {
+                    Console.WriteLine("Admin login successful!");
+                    byte[] reply = Encoding.UTF8.GetBytes("ADMIN_LOGIN_SUCCESS\n");
+                    stream.Write(reply, 0, reply.Length);
+                    continue;
+                }
 
                 bool success = users.LoginUser(userId, password);
 
@@ -278,6 +287,112 @@ void HandleClient(TcpClient client)
                 byte[] reply = Encoding.UTF8.GetBytes(response);
 
                 stream.Write(reply, 0, reply.Length);
+
+                continue;
+            }
+            //Admin Operations
+            if (message.StartsWith("ADMIN_CHAT_HISTORY:"))
+            {
+                string userId = message.Substring("ADMIN_CHAT_HISTORY:".Length);
+                Console.WriteLine("Admin requested chat history for: " + userId);
+                List<string[]> chatHistory = messages.getUserChatHistory(userId);
+
+                foreach (string[] msg in chatHistory)
+                {
+                    string response = $"CHAT_HISTORY:{msg[0]}|{msg[1]}|{msg[2]}|{msg[3]}\n";
+                    byte[] reply = Encoding.UTF8.GetBytes(response);
+                    stream.Write(reply, 0, reply.Length);
+                }
+              
+                byte[] done =Encoding.UTF8.GetBytes("CHAT_HISTORY_END\n");
+
+                stream.Write(done, 0, done.Length);
+
+                continue;
+            }
+            if (message.StartsWith("ADMIN_SEARCH_USER:"))
+            {
+                string searchText =message.Substring("ADMIN_SEARCH_USER:".Length);
+
+                Console.WriteLine("Admin searching: " + searchText);
+
+                List<string[]> userList = users.SearchUsers(searchText);
+
+                foreach (string[] user in userList)
+                {
+                    string response =$"ADMIN_USER:{user[0]}|{user[1]}|{user[2]}\n";
+                    byte[] reply =Encoding.UTF8.GetBytes(response);
+                    stream.Write(reply, 0, reply.Length);
+                }
+
+                byte[] done = Encoding.UTF8.GetBytes("ADMIN_SEARCH_END\n");
+                stream.Write(done, 0, done.Length);
+
+                continue;
+            }
+            if (message.StartsWith("ADMIN_UPDATE_USER:"))
+            {
+                string data =message.Substring("ADMIN_UPDATE_USER:".Length);
+                string[] parts = data.Split('|', 3);
+
+                if (parts.Length != 3)
+                {
+                    byte[] reply =Encoding.UTF8.GetBytes("ADMIN_UPDATE_FAILED\n");
+                    stream.Write(reply, 0, reply.Length);
+
+                    continue;
+                }
+
+                string userId = parts[0];
+                string username = parts[1];
+                string password = parts[2];
+
+                Console.WriteLine($"Admin updating user {userId}");
+
+                bool updated =users.UpdateUser(userId,username,password);
+
+                string response = updated? "ADMIN_UPDATE_SUCCESS\n": "ADMIN_UPDATE_FAILED\n";
+
+                byte[] responseData =Encoding.UTF8.GetBytes(response);
+
+                stream.Write(responseData, 0, responseData.Length);
+
+                continue;
+            }
+
+            if (message.StartsWith("ADMIN_DELETE_USER:"))
+            {
+                string userId=message.Substring("ADMIN_DELETE_USER:".Length);
+                Console.WriteLine("Admin deleting user: " + userId);
+                bool deleted = users.adminDelete(userId);
+                string response = deleted ? "ADMIN_DELETE_SUCCESS\n" : "ADMIN_DELETE_FAILED\n";
+                byte[] reply = Encoding.UTF8.GetBytes(response);
+                stream.Write(reply, 0, reply.Length);
+                continue;
+            }
+
+            if (message.StartsWith("ADMIN_GET_USER:"))
+            {
+                string userId = message.Substring("ADMIN_GET_USER:".Length).Trim();
+
+                Console.WriteLine("Admin requesting user info: " + userId);
+
+                string[]? user = users.GetUser(userId);
+
+                if (user != null)
+                {
+                    string response = $"ADMIN_USER_INFO:{user[0]}|{user[1]}\n";
+
+                    byte[] reply = Encoding.UTF8.GetBytes(response);
+
+                    stream.Write(reply, 0, reply.Length);
+                }
+                else
+                {
+                    byte[] reply = Encoding.UTF8.GetBytes("ADMIN_USER_NOT_FOUND\n");
+
+                    stream.Write(reply, 0, reply.Length);
+                }
 
                 continue;
             }

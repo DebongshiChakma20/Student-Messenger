@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MessengerDraft_1
+namespace Messenger
 {
     public partial class addUserForm : Form
     {
@@ -20,6 +20,7 @@ namespace MessengerDraft_1
         public addUserForm(MainForm mForm,Client client,string userId)
         {
             InitializeComponent();
+            searchPanel.BackColor = Color.Transparent;
             this.mForm = mForm;
             currentUserId = userId;
             this.client = client;

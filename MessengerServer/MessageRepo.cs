@@ -78,4 +78,31 @@ public class MessageRepository
         }
         return message;
     }
+
+    public List<string[]>getUserChatHistory(string userId)
+    {
+        List<string[]> history = new List<string[]>();
+        using SqlConnection connection = database.GetConnection();
+        connection.Open();
+        string sql = """
+            SELECT messageId, senderId, receiverId, messageText
+            FROM Messages
+            WHERE senderId=@userId OR receiverId=@userId
+            ORDER BY messageId ASC
+            """;
+        using SqlCommand cmd = new SqlCommand(sql, connection);
+        cmd.Parameters.AddWithValue("@userId", userId);
+        using SqlDataReader reader = cmd.ExecuteReader();
+        while (reader.Read())
+        {
+            history.Add(new string[]
+            {
+                reader["messageId"].ToString()!,
+                reader["senderId"].ToString()!,
+                reader["receiverId"].ToString()!,
+                reader["messageText"].ToString()!
+            });
+        }
+        return history;
+    }
 }

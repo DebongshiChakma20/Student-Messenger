@@ -1,4 +1,4 @@
-﻿namespace MessengerDraft_1
+﻿namespace Messenger
 {
     partial class addUserForm
     {
@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             floSearch = new FlowLayoutPanel();
-            panel1 = new Panel();
+            searchPanel = new Panel();
             btnAddUserSearch = new Button();
             lblSearch = new Label();
             tbxSearch = new TextBox();
             btnbackAddUser = new Button();
-            panel1.SuspendLayout();
+            searchPanel.SuspendLayout();
             SuspendLayout();
             // 
             // floSearch
@@ -45,15 +45,15 @@
             floSearch.Size = new Size(786, 306);
             floSearch.TabIndex = 0;
             // 
-            // panel1
+            // searchPanel
             // 
-            panel1.Controls.Add(btnAddUserSearch);
-            panel1.Controls.Add(lblSearch);
-            panel1.Controls.Add(tbxSearch);
-            panel1.Location = new Point(126, 12);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(489, 60);
-            panel1.TabIndex = 4;
+            searchPanel.Controls.Add(btnAddUserSearch);
+            searchPanel.Controls.Add(lblSearch);
+            searchPanel.Controls.Add(tbxSearch);
+            searchPanel.Location = new Point(126, 12);
+            searchPanel.Name = "searchPanel";
+            searchPanel.Size = new Size(489, 60);
+            searchPanel.TabIndex = 4;
             // 
             // btnAddUserSearch
             // 
@@ -82,7 +82,6 @@
             tbxSearch.Name = "tbxSearch";
             tbxSearch.Size = new Size(264, 23);
             tbxSearch.TabIndex = 4;
-           
             // 
             // btnbackAddUser
             // 
@@ -101,14 +100,13 @@
             BackgroundImage = Properties.Resources.addPanel;
             ClientSize = new Size(788, 450);
             Controls.Add(btnbackAddUser);
-            Controls.Add(panel1);
+            Controls.Add(searchPanel);
             Controls.Add(floSearch);
             Name = "addUserForm";
             Text = "Add User";
             FormClosing += addUserForm_FormClosing;
-       
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            searchPanel.ResumeLayout(false);
+            searchPanel.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -120,5 +118,6 @@
         private Label lblSearch;
         private TextBox tbxSearch;
         private Button btnbackAddUser;
+        private Panel searchPanel;
     }
 }

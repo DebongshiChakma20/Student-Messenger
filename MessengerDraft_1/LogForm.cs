@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MessengerDraft_1
+namespace Messenger
 {
     public partial class logForm : Form
     {
@@ -19,6 +19,8 @@ namespace MessengerDraft_1
             InitializeComponent();
             lblName.BackColor = Color.Transparent;
             lblPass.BackColor = Color.Transparent;
+            linkLabelSI.BackColor = Color.Transparent;
+            userPanel.BackColor = Color.Transparent;
 
             client = new Client();
             client.Connect();
@@ -67,13 +69,29 @@ namespace MessengerDraft_1
             client.Send(request);
 
 
+            if(userId == "admin" && password == "1444")
+            {
+                
+            }
+
         }
 
         private void clientMessageReceived(string text)
         {
             this.Invoke(() =>
             {
-                if (text == "LOGIN_SUCCESS")
+
+                if (text == "ADMIN_LOGIN_SUCCESS")
+                {
+                    string userId = tbxUserId.Text.Trim();
+
+                    client.MessageReceived -= clientMessageReceived;
+
+                    Admin adminForm = new Admin(userId, client);
+                    adminForm.Show();
+                    this.Hide();
+                }
+                else if (text == "LOGIN_SUCCESS")
                 {
                     this.BeginInvoke(new Action(() =>
                     {

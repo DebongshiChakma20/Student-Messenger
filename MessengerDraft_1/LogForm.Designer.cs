@@ -1,4 +1,4 @@
-﻿namespace MessengerDraft_1
+﻿namespace Messenger
 {
     partial class logForm
     {
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            panel1 = new Panel();
+            userPanel = new Panel();
             linkLabelSI = new LinkLabel();
             btnSignIn = new Button();
             tbxPass = new TextBox();
@@ -36,22 +36,21 @@
             lblPass = new Label();
             lblName = new Label();
             btnbackSignIn = new Button();
-            panel1.SuspendLayout();
+            userPanel.SuspendLayout();
             SuspendLayout();
             // 
-            // panel1
+            // userPanel
             // 
-            panel1.BackgroundImage = Properties.Resources.signinPanelBackground;
-            panel1.Controls.Add(linkLabelSI);
-            panel1.Controls.Add(btnSignIn);
-            panel1.Controls.Add(tbxPass);
-            panel1.Controls.Add(tbxUserId);
-            panel1.Controls.Add(lblPass);
-            panel1.Controls.Add(lblName);
-            panel1.Location = new Point(275, 134);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(484, 303);
-            panel1.TabIndex = 0;
+            userPanel.Controls.Add(linkLabelSI);
+            userPanel.Controls.Add(btnSignIn);
+            userPanel.Controls.Add(tbxPass);
+            userPanel.Controls.Add(tbxUserId);
+            userPanel.Controls.Add(lblPass);
+            userPanel.Controls.Add(lblName);
+            userPanel.Location = new Point(288, 174);
+            userPanel.Name = "userPanel";
+            userPanel.Size = new Size(484, 303);
+            userPanel.TabIndex = 0;
             // 
             // linkLabelSI
             // 
@@ -97,6 +96,7 @@
             // 
             lblPass.AutoSize = true;
             lblPass.Font = new Font("Segoe UI", 12F);
+            lblPass.ForeColor = Color.White;
             lblPass.Location = new Point(25, 142);
             lblPass.Margin = new Padding(4, 0, 4, 0);
             lblPass.Name = "lblPass";
@@ -108,6 +108,7 @@
             // 
             lblName.AutoSize = true;
             lblName.Font = new Font("Segoe UI", 12F);
+            lblName.ForeColor = Color.White;
             lblName.Location = new Point(42, 79);
             lblName.Margin = new Padding(4, 0, 4, 0);
             lblName.Name = "lblName";
@@ -132,20 +133,20 @@
             BackgroundImage = Properties.Resources.signinpanel;
             ClientSize = new Size(1029, 630);
             Controls.Add(btnbackSignIn);
-            Controls.Add(panel1);
+            Controls.Add(userPanel);
             Font = new Font("Segoe UI", 12F);
             Margin = new Padding(4);
             Name = "logForm";
             Text = "Sign in or up";
             FormClosing += logForm_FormClosing;
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            userPanel.ResumeLayout(false);
+            userPanel.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Panel panel1;
+        private Panel userPanel;
         private LinkLabel linkLabelSI;
         private Button btnSignIn;
         private TextBox tbxPass;

@@ -1,4 +1,4 @@
 <Solution>
-  <Project Path="MessengerDraft_1/MessengerDraft_1.csproj" />
+  <Project Path="MessengerDraft_1/Messenger.csproj" />
   <Project Path="MessengerServer/MessengerServer.csproj" Id="74eb25d9-4ec5-4ef4-b7f1-ae4ee0182eb1" />
 </Solution>

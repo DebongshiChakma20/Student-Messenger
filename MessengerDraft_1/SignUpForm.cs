@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
-namespace MessengerDraft_1
+namespace Messenger
 {
     public partial class signUpForm : Form
     {
@@ -18,8 +18,9 @@ namespace MessengerDraft_1
         {
             InitializeComponent();
             lblNameSU.BackColor = Color.Transparent;
-            lblPassSU.BackColor = Color.Transparent;
             lblUserIdSU.BackColor = Color.Transparent;
+            lblPassSU.BackColor = Color.Transparent;
+            signUpPanel2.BackColor = Color.Transparent;
 
             client = new Client();
             client.Connect();

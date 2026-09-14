@@ -1,4 +1,4 @@
-namespace MessengerDraft_1
+namespace Messenger
 {
     internal static class Program
     {

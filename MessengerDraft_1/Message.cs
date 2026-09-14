@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MessengerDraft_1
+namespace Messenger
 {
     internal class Message
     {

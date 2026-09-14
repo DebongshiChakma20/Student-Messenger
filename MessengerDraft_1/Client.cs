@@ -17,18 +17,21 @@ public class Client
     {
         try
         {
-            if (client != null && client.Connected) return;
-
             client = new TcpClient();
+
+            Console.WriteLine("Connecting to server...");
 
             client.Connect("100.122.189.41", 5000);
 
             stream = client.GetStream();
-            reader=new StreamReader(stream,Encoding.UTF8);
-            
+            reader = new StreamReader(stream, Encoding.UTF8);
+
+            Console.WriteLine("CONNECTED TO SERVER");
+            Console.WriteLine("Client object: " + this);
         }
         catch (Exception ex)
         {
+            Console.WriteLine("CONNECTION ERROR: " + ex.Message);
             MessageBox.Show("Connection error: " + ex.Message);
         }
     }
@@ -37,21 +40,24 @@ public class Client
     {
         try
         {
-            if (client == null || stream == null || !client.Connected)
+            if (stream == null)
             {
-                MessageBox.Show("Client is NOT connected.");
+                MessageBox.Show("Stream is null. Client is not connected.");
                 return;
             }
+
             message += "\n";
+
             byte[] data = Encoding.UTF8.GetBytes(message);
 
             stream.Write(data, 0, data.Length);
             stream.Flush();
 
-            Console.WriteLine("Sent: " + message);
+            Console.WriteLine("SENT: " + message);
         }
         catch (Exception ex)
         {
+            Console.WriteLine("SEND ERROR: " + ex.Message);
             MessageBox.Show("Send error: " + ex.Message);
         }
     }
@@ -68,22 +74,15 @@ public class Client
             if (message == null)
                 return "";
 
-            Console.WriteLine("Client received: " + message);
+            Console.WriteLine("RECEIVED: " + message);
 
             return message;
         }
         catch (Exception ex)
         {
-            Console.WriteLine("Receive error: " + ex.Message);
+            Console.WriteLine("RECEIVE ERROR: " + ex.Message);
             return "";
         }
-    }
-
-    public void deleteMessage(string messageId)
-    {
-        string request = $"DELETE_MESSAGE:{messageId}";
-
-        Send(request);
     }
 
     public void StartListening()
@@ -91,25 +90,52 @@ public class Client
         if (listening)
             return;
 
+        if (reader == null)
+        {
+            Console.WriteLine("Cannot start listener: reader is null.");
+            return;
+        }
+
         listening = true;
 
         Thread thread = new Thread(() =>
         {
-            while (listening && client != null && client.Connected)
+            Console.WriteLine("LISTENER STARTED");
+
+            while (listening)
             {
                 string message = ReceiveMessage();
 
-                if (!string.IsNullOrEmpty(message))
+                if (string.IsNullOrEmpty(message))
                 {
-                    MessageReceived?.Invoke(message);
+                    Console.WriteLine("Listener stopped: no message received.");
+                    break;
                 }
+
+                MessageReceived?.Invoke(message);
             }
 
             listening = false;
+
+            Console.WriteLine("LISTENER STOPPED");
         });
 
         thread.IsBackground = true;
         thread.Start();
+    }
+
+    public bool IsConnected
+    {
+        get
+        {
+            return client != null &&
+                   stream != null;
+        }
+    }
+
+    public void deleteMessage(string messageId)
+    {
+        Send($"DELETE_MESSAGE:{messageId}");
     }
 
     public void Disconnect()
@@ -118,6 +144,7 @@ public class Client
 
         try
         {
+            reader?.Close();
             stream?.Close();
             client?.Close();
         }
@@ -125,7 +152,10 @@ public class Client
         {
         }
 
+        reader = null;
         stream = null;
         client = null;
+
+        Console.WriteLine("CLIENT DISCONNECTED");
     }
 }

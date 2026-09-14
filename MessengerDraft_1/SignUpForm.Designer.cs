@@ -1,4 +1,4 @@
-﻿namespace MessengerDraft_1
+﻿namespace Messenger
 {
     partial class signUpForm
     {
@@ -42,7 +42,6 @@
             // 
             // signUpPanel2
             // 
-            signUpPanel2.BackgroundImage = Properties.Resources.signupPanel;
             signUpPanel2.Controls.Add(btSignUp);
             signUpPanel2.Controls.Add(tbxPasswordSU);
             signUpPanel2.Controls.Add(tbxNameSU);
@@ -50,7 +49,7 @@
             signUpPanel2.Controls.Add(lblPassSU);
             signUpPanel2.Controls.Add(lblNameSU);
             signUpPanel2.Controls.Add(lblUserIdSU);
-            signUpPanel2.Location = new Point(260, 91);
+            signUpPanel2.Location = new Point(211, 82);
             signUpPanel2.Name = "signUpPanel2";
             signUpPanel2.Size = new Size(425, 266);
             signUpPanel2.TabIndex = 0;
@@ -92,6 +91,7 @@
             // 
             lblPassSU.AutoSize = true;
             lblPassSU.Font = new Font("Segoe UI", 12F);
+            lblPassSU.ForeColor = Color.White;
             lblPassSU.Location = new Point(45, 142);
             lblPassSU.Name = "lblPassSU";
             lblPassSU.Size = new Size(79, 21);
@@ -102,6 +102,7 @@
             // 
             lblNameSU.AutoSize = true;
             lblNameSU.Font = new Font("Segoe UI", 12F);
+            lblNameSU.ForeColor = Color.White;
             lblNameSU.Location = new Point(62, 93);
             lblNameSU.Name = "lblNameSU";
             lblNameSU.Size = new Size(55, 21);
@@ -112,6 +113,7 @@
             // 
             lblUserIdSU.AutoSize = true;
             lblUserIdSU.Font = new Font("Segoe UI", 12F);
+            lblUserIdSU.ForeColor = Color.Transparent;
             lblUserIdSU.Location = new Point(62, 44);
             lblUserIdSU.Name = "lblUserIdSU";
             lblUserIdSU.Size = new Size(62, 21);
