@@ -113,10 +113,6 @@ namespace Messenger
             {
                 if (text == "CONTACT_ADD_SUCCESSFUL")
                 {
-                    
-                    string searchedId = tbxSearch.Text.Trim();
-
-                    
                     foreach (Control control in floSearch.Controls)
                     {
                         if (control is Panel panel)
@@ -151,15 +147,15 @@ namespace Messenger
                     return;
                 }
 
-                string[] parts = text.Split('|');
-
-                if (parts[0] == "USER_NOT_FOUND")
+                if (text == "USER_NOT_FOUND")
                 {
                     MessageBox.Show("User not found.");
                     return;
                 }
 
-                if (parts[1] == "USER_FOUND")
+                string[] parts = text.Split('|');
+
+                if (parts.Length >= 4 && parts[0] == "USER_FOUND")
                 {
                     Contact contact = new Contact();
 

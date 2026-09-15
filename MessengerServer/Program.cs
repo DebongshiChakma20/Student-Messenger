@@ -400,7 +400,7 @@ void HandleClient(TcpClient client)
             // search
             if (message.StartsWith("SEARCH_USER:"))
             {
-                string userId = message.Substring("SEARCH_USER:".Length);
+                string userId = message.Substring("SEARCH_USER:".Length).Trim();
 
                 Console.WriteLine("Searching for: " + userId);
 
@@ -410,19 +410,31 @@ void HandleClient(TcpClient client)
 
                     if (user != null)
                     {
-                        string response = $"USER_FOUND|{user[0]}|{user[1]}|Online\n";
+                        string response =
+                            $"USER_FOUND|{user[0]}|{user[1]}|Online\n";
+
+                        Console.WriteLine("Sending: " + response);
 
                         byte[] reply = Encoding.UTF8.GetBytes(response);
-
                         stream.Write(reply, 0, reply.Length);
                     }
                     else
                     {
-                        byte[] reply = Encoding.UTF8.GetBytes("USER_NOT_FOUND\n");
+                        byte[] reply =
+                            Encoding.UTF8.GetBytes("USER_NOT_FOUND\n");
 
                         stream.Write(reply, 0, reply.Length);
                     }
                 }
+                else
+                {
+                    byte[] reply =
+                        Encoding.UTF8.GetBytes("USER_NOT_FOUND\n");
+
+                    stream.Write(reply, 0, reply.Length);
+                }
+
+                continue;
             }
         }
     }

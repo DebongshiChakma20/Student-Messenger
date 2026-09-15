@@ -16,9 +16,7 @@ namespace Messenger
 
         public Admin(string userId, Client client)
         {
-            lblATitle.BackColor = Color.Transparent;
-            lblAdmibYUId.BackColor = Color.Transparent;
-            lblchat.BackColor = Color.Transparent;
+             
             InitializeComponent();
             this.client = client;
 

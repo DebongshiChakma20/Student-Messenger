@@ -46,6 +46,7 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
             label1.Location = new Point(208, 109);
             label1.Name = "label1";
             label1.Size = new Size(50, 15);
@@ -77,6 +78,7 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.BackColor = Color.Transparent;
             label2.Location = new Point(219, 180);
             label2.Name = "label2";
             label2.Size = new Size(96, 15);
@@ -87,6 +89,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.oneee;
             ClientSize = new Size(800, 450);
             Controls.Add(label2);
             Controls.Add(lblAUser);

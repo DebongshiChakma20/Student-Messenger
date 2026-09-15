@@ -46,6 +46,8 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = Color.Transparent;
+            label1.ForeColor = Color.Black;
             label1.Location = new Point(181, 48);
             label1.Name = "label1";
             label1.Size = new Size(50, 15);
@@ -71,6 +73,7 @@
             // 
             // flpAdminSearch
             // 
+            flpAdminSearch.BackColor = Color.Gainsboro;
             flpAdminSearch.Location = new Point(181, 91);
             flpAdminSearch.Name = "flpAdminSearch";
             flpAdminSearch.Size = new Size(422, 100);
@@ -78,6 +81,7 @@
             // 
             // updatePanel
             // 
+            updatePanel.BackColor = Color.Transparent;
             updatePanel.Controls.Add(btnFinalAdminUpdate);
             updatePanel.Controls.Add(tbxPassUpdate);
             updatePanel.Controls.Add(tbxIdUpdate);
@@ -153,6 +157,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackgroundImage = Properties.Resources.twoo;
             ClientSize = new Size(800, 450);
             Controls.Add(updatePanel);
             Controls.Add(flpAdminSearch);
