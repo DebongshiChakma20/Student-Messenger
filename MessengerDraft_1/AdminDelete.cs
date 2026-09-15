@@ -40,41 +40,47 @@ namespace Messenger
 
         private void adminDeleteMessageReceived(string message)
         {
-            this.Invoke(() =>
+            if (IsDisposed || Disposing)
+                return;
+
+            if (InvokeRequired)
             {
-                if (message == "ADMIN_DELETE_SUCCESS")
-                {
-                    MessageBox.Show("User deleted successfully.");
-                    lblAUser.Text = "";
-                    tbxDeleteAdmin.Clear();
-                }
-                else if (message == "ADMIN_DELETE_FAILED")
-                {
-                    MessageBox.Show("Failed to delete user.");
-                }
-                else if (message.StartsWith("ADMIN_USER_INFO:"))
-                {
-                    string data = message.Substring("ADMIN_USER_INFO:".Length);
+                Invoke(() => adminDeleteMessageReceived(message));
+                return;
+            }
 
-                    string[] parts = data.Split('|', 2);
+            if (message == "ADMIN_DELETE_SUCCESS")
+            {
+                MessageBox.Show("User deleted successfully.");
+                lblAUser.Text = "";
+                tbxDeleteAdmin.Clear();
+            }
+            else if (message == "ADMIN_DELETE_FAILED")
+            {
+                MessageBox.Show("Failed to delete user.");
+            }
+            else if (message.StartsWith("ADMIN_USER_INFO:"))
+            {
+                string data = message.Substring("ADMIN_USER_INFO:".Length);
 
-                    if (parts.Length == 2)
-                    {
-                        string userId = parts[0];
-                        string username = parts[1];
+                string[] parts = data.Split('|', 2);
 
-                        lblAUser.Text =
-                            $"User ID: {userId}\r\n" +
-                            $"Username: {username}";
-                    }
-                }
-                else if (message == "ADMIN_USER_NOT_FOUND")
+                if (parts.Length == 2)
                 {
-                    lblAUser.Text = "User not found.";
+                    string userId = parts[0];
+                    string username = parts[1];
+
+                    lblAUser.Text =
+                        $"User ID: {userId}\r\n" +
+                        $"Username: {username}";
                 }
-            });
+            }
+            else if (message == "ADMIN_USER_NOT_FOUND")
+            {
+                lblAUser.Text = "User not found.";
+            }
         }
-        
+
 
         private void tbxDeleteAdmin_TextChanged_1(object sender, EventArgs e)
         {
